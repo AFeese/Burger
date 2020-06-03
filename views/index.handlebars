@@ -7,34 +7,35 @@
 
       <ul>
         {{#each burgers}}
-        {{#unless this.devoured}}
-        <li>
-          {{!--> burgers/burger-block devour=true --}}
-          {{this.id}}
-          {{this.burger_name}}
-          <form action="/{{this.id}}?_method=PUT" method="POST">
-            <input type="hidden" name="devoured" value="true">
-            <button class="btn-primary" type="submit">Devour It!</button>
-          </form>
-        </li>
-        {{/unless}}
+          {{#unless this.devoured}}
+            <li>
+              {{this.id}}
+              {{this.burger_name}}
+
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="true">
+                <button class="btn-primary" type="submit">Devour It!</button>
+              </form>
+
+            </li>
+          {{/unless}}
         {{/each}}
       </ul>
+
     </div>
 
     <div class="col-sm-6">
       <h2>Burgers that are Devoured!</h2>
 
-      <ul>
         {{#each burgers}}
-        {{#if this.devoured}}
-        <li>
-          {{this.id}}
-          {{this.burger_name}}
-        </li>
-        {{/if}}
+          {{#if this.devoured}}
+            <li>
+              {{this.id}}
+              {{this.burger_name}}
+              
+            </li>
+          {{/if}}
         {{/each}}
-      </ul>
     </div>
 
   </div>
