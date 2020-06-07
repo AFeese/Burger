@@ -7,18 +7,14 @@
 
       <ul>
         {{#each burgers}}
-          {{#unless this.devoured}}
-            <li>
-              {{this.id}}
-              {{this.burger_name}}
+        {{#unless devoured}}
+        <li>
+          {{this.id}} {{this.burger_name}}
 
-              <form action="/{{this.id}}?_method=PUT" method="POST">
-                <input type="hidden" name="devoured" value="true">
-                <button class="btn-primary" type="submit">Devour It!</button>
-              </form>
+          <button class="change-status" data-id="{{id}}" data-newburger="true">DEVOUR!!</button>
 
-            </li>
-          {{/unless}}
+        </li>
+        {{/unless}}
         {{/each}}
       </ul>
 
@@ -27,15 +23,14 @@
     <div class="col-sm-6">
       <h2>Burgers that are Devoured!</h2>
 
-        {{#each burgers}}
-          {{#if this.devoured}}
-            <li>
-              {{this.id}}
-              {{this.burger_name}}
-              
-            </li>
-          {{/if}}
-        {{/each}}
+      {{#each burgers}}
+      {{#if devoured}}
+      <li>
+        {{this.id}} {{this.burger_name}}
+
+      </li>
+      {{/if}}
+      {{/each}}
     </div>
 
   </div>
@@ -43,19 +38,57 @@
   <div class="row">
     <div class="center col-sm-12">
       <h2>Add a Burger</h2>
-      
-      <form class="create-update-form" action="/" method="POST">
+
+      <form class="create-form">
 
         <div class="form-group">
-          <p>Enter a burger you want to order and click the Submit Order button.</p>
-          <input type="text" id="ca" name="burger_name">
+          <p> Enter a burger you want to order and click the Submit Order button. </p>
+          <textarea id="burger_name" name="burger_name"> </textarea>
         </div>
 
         <button class="btn-primary" type="submit">Submit Order</button>
       </form>
 
-
     </div>
   </div>
 
 </div>
+
+<script type="text/javascript">
+  $(".change-status").on("click", function (event) {
+    let id = $(this).data("id");
+    console.log(id);
+    let newBurger = $(this).data("newburger");
+    let newBurgerStatus = {
+      devoured: newBurger
+    };
+    console.log(newBurgerStatus);
+    // Send the PUT request.
+    $.ajax("/api/burger/" + id, {
+      type: "PUT",
+      data: newBurgerStatus
+    }).then(
+      function () {
+        console.log("changed status to", newBurger);
+        location.reload();
+      }
+    );
+  });
+
+  $(".create-form").on("submit", function (event) {
+    event.preventDefault();
+    let newBurger = {
+      burger_name: $("#burger_name").val().trim()
+    };
+    // Send the POST request.
+    $.ajax("/api/burger", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function () {
+        console.log("added new burger");
+        location.reload();
+      }
+    );
+  });
+</script>
