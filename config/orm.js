@@ -1,16 +1,6 @@
-//Made changes here---------------------------------------//
 const connection = require("./connection.js");
 
-// // Helper function for SQL syntax.
-// function printQuestionMarks(num) {
-//   var arr = [];
 
-//   for (var i = 0; i < num; i++) {
-//     arr.push("?");
-//   }
-
-//   return arr.toString();
-// }
 
 // Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
@@ -31,7 +21,7 @@ function objToSql(ob) {
 };
 
 // Object for all our SQL statement functions.
-var orm = {
+const orm = {
   all: function (tableInput, cb) {
     let queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
@@ -94,5 +84,4 @@ var orm = {
   //   }
 };
 
-// Export the orm object for the model (cat.js).
 module.exports = orm;
