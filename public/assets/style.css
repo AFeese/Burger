@@ -1,0 +1,20 @@
+body {
+  border: black;
+  border-width: 10px;
+}
+
+.eat {
+  text-align: center;
+  font-weight: bold;
+};
+
+.centerCol {
+text-align: center;
+background: black;
+color: white;
+};
+
+.form-group {
+  margin-bottom: 5px;
+  justify-content: center;
+};
