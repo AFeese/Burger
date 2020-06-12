@@ -1,5 +1,5 @@
 <div class="container bg">
-  <h1 class="eat">Eat Dat Burger!</h1>
+  <h1>Eat Dat Burger!</h1>
 
   <div class="row">
     <div class="col-sm-6">
@@ -20,7 +20,7 @@
 
     </div>
 
-    <div class="col-sm-6">
+    <div id="devoured" class="col-sm-6">
       <h2>Burgers that are Devoured!</h2>
 
       {{#each burgers}}
@@ -36,7 +36,7 @@
   </div>
 
   <div class="row">
-    <div class="center col-sm-12 col-lg-12 centerCol">
+    <div class="center col-sm-12 col-lg-12">
       <h2>Add a Burger</h2>
 
       <form class="create-form">
@@ -52,41 +52,4 @@
 
 </div>
 
-<script type="text/javascript">
-  $(".change-status").on("click", function (event) {
-    let id = $(this).data("id");
-    console.log(id);
-    let newBurger = $(this).data("newburger");
-    let newBurgerStatus = {
-      devoured: newBurger
-    };
-    console.log(newBurgerStatus);
-    // Send the PUT request.
-    $.ajax("/api/burger/" + id, {
-      type: "PUT",
-      data: newBurgerStatus
-    }).then(
-      function () {
-        console.log("changed status to", newBurger);
-        location.reload();
-      }
-    );
-  });
 
-  $(".create-form").on("submit", function (event) {
-    event.preventDefault();
-    let newBurger = {
-      burger_name: $("#burger_name").val().trim()
-    };
-    // Send the POST request.
-    $.ajax("/api/burger", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function () {
-        console.log("added new burger");
-        location.reload();
-      }
-    );
-  });
-</script>
