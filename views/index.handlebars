@@ -2,7 +2,7 @@
   <h1>Eat Dat Burger!</h1>
 
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 available">
       <h2>Burgers that are Available to Eat!</h2>
 
       <ul>
@@ -11,7 +11,7 @@
         <li>
           {{this.id}} {{this.burger_name}}
 
-          <button class="change-status" data-id="{{id}}" data-newburger="true">DEVOUR!!</button>
+          <button class="change-status devour" data-id="{{id}}" data-newburger="true">DEVOUR!!</button>
 
         </li>
         {{/unless}}
@@ -20,7 +20,7 @@
 
     </div>
 
-    <div id="devoured" class="col-sm-6">
+    <div id="devoured" class="col-sm-6 devoured">
       <h2>Burgers that are Devoured!</h2>
 
       {{#each burgers}}
@@ -52,4 +52,41 @@
 
 </div>
 
+<script type="text/javascript">
+	$(".change-status").on("click", function (event) {
+		let id = $(this).data("id");
+		console.log(id);
+		let newBurger = $(this).data("newburger");
+		let newBurgerStatus = {
+			devoured: newBurger
+		};
+		console.log(newBurgerStatus);
+		// Send the PUT request.
+		$.ajax("/api/burger/" + id, {
+			type: "PUT",
+			data: newBurgerStatus
+		}).then(
+			function () {
+				console.log("changed status to", newBurger);
+				location.reload();
+			}
+		);
+	});
 
+	$(".create-form").on("submit", function (event) {
+		event.preventDefault();
+		let newBurger = {
+			burger_name: $("#burger_name").val().trim()
+		};
+		// Send the POST request.
+		$.ajax("/api/burger", {
+			type: "POST",
+			data: newBurger
+		}).then(
+			function () {
+				console.log("added new burger");
+				location.reload();
+			}
+		);
+	});
+</script>

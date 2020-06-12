@@ -1,20 +1,30 @@
-/* @import '~bootstrap/dist/css/bootstrap.css'; */
+p{
+  text-align: center;
+} 
 
 h1{
   text-align: center;
   color: blue;
-};
+}
 
 h2 {
   color: green;
   text-align: center;
-};
-
-#devoured {
-  color: blue;
 }
 
-.form-group {
+.devoured {
+  border-radius: 15px;
+  border-color: black;
+  border-style: solid;
+}
+
+.available {
+  border-radius: 15px;
+  border-color: black;
+  border-style: solid;
+}
+
+.create-form {
   margin-bottom: 5px;
   justify-content: center;
-};
+}
