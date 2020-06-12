@@ -3,18 +3,6 @@
 
 # Eat Da Burger!
 
-## Version:
-*CSS pending.
-Continuously in progress!
-
-
-
-
-## Description of Eat Da Burger!:
-Hungry? Eat a burger! Enter a burger of your choice and choose to Devour it, or leave it unDevoured! Using MySQL, Express, Node.js, Handlebars and ORM, User can enter a unique burger name and add it to the burger list. User has an option to "devour" the burger by clicking the "devour" button. Burger is then moved to the "Devoured" list.
-
-
-
 
 ## Table of Contents:
 * TITLE
@@ -28,6 +16,16 @@ Hungry? Eat a burger! Enter a burger of your choice and choose to Devour it, or 
 * CONTACT
 
 
+
+## Version:
+*CSS pending.
+Continuously in progress!
+
+
+
+
+## Description of Eat Da Burger!:
+Hungry? Eat a burger! Enter a burger of your choice and choose to Devour it, or leave it unDevoured! Using MySQL, Express, Node.js, Handlebars and ORM, User can enter a unique burger name and add it to the burger list. User has an option to "devour" the burger by clicking the "devour" button. Burger is then moved to the "Devoured" list.
 
 
 ## Installation: 
