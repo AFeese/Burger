@@ -24,6 +24,7 @@
   "homepage": "https://github.com/AFeese/TestBurger#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.0",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "jquery": "^3.5.1",
